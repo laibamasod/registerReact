@@ -4,13 +4,14 @@ import { db } from './firebaseConfig';
 
 import './RegisterForm.css';
 const RegisterForm = () => {
-    const [formData, setFormData] = useState({
+    const initialState = {
         username: '',
         email: '',
         password: '',
         gender: '',
         comments: '',
-    })
+    }
+    const [formData, setFormData] = useState(initialState)
     const handleChange = (e) => {
         // console.log(e.target)
         const { name, value } = e.target
@@ -32,6 +33,7 @@ const RegisterForm = () => {
               comments: formData.comments,
             });
             alert('User registered successfully');
+            setFormData(initialState)
           } catch (e) {
             console.error('Error adding document: ', e);
           }
